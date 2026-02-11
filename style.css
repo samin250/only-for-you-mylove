@@ -1,0 +1,636 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* Soft Pastel Gradient (Pink to Cream) */
+    background: linear-gradient(135deg, #dd5f78 0%, #f0f4ff 100%); 
+    font-family: 'Poppins', sans-serif; /* Modern, clean font */
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    transition: opacity 0.8s ease;
+    z-index: 2;
+}
+
+.hidden {
+    display: none !important;
+    opacity: 0;
+}
+
+h1 {
+    color: #d63384; /* Deep Rose Pink */
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 40px;
+    letter-spacing: -1px;
+}
+/* Animations */
+.pop-text {
+    animation: popIn 1s ease-out;
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.btn-group {
+    position: relative;
+}
+
+button {    padding: 16px 45px;
+    font-size: 1.1rem;
+    border: 2px solid #eb696f;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin: 10px;
+    background: #ff8fa32b;  
+}
+
+#yes-btn {
+    background: #d63384;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 10px 20px rgba(214, 51, 132, 0.2);
+}
+
+#yes-btn:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 15px 25px rgba(214, 51, 132, 0.3);
+}
+
+#no-btn {
+    background-color: white;
+    color: #d63384;
+    border: 2px solid #d63384;
+    font-weight: 600;
+    position: absolute;
+    z-index: 10;
+    cursor: pointer;
+}
+.message-card {
+    background: #ffffff2e   ;
+    padding: 50px;
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    max-width: 600px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 40px srgba(0, 0, 0, 0.05);
+}
+
+.message-card h2 { 
+    color: #d63384; 
+    margin-bottom: 20px;
+}
+
+.message-card p { 
+    color: #555; 
+    line-height: 1.8; 
+    font-size: 1.2rem;
+}
+.heart {
+    position: fixed;
+    top: -5vh;
+    color: #ff8fa3;
+    font-size: clamp(2rem, 5vw, 4rem);
+    z-index: 1;
+    user-select: none;
+    animation: fall linear forwards;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(105vh);
+    }
+}
+/* MASSIVE LANDSCAPE ENVELOPE */
+.envelope-wrapper {
+    position: relative;
+    width: 650px; /* Wide landscape width */
+    height: 380px; /* Taller height */
+    margin: 50px auto;
+    perspective: 1500px; 
+    cursor: pointer;
+}
+
+.envelope {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #ffc0cb;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Wide Flap */
+.flap {
+    position: absolute;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-left: 325px solid transparent; /* Half of 650 */
+    border-right: 325px solid transparent;
+    border-top: 200px solid #d63384; 
+    transform-origin: top;
+    z-index: 3;
+    transition: transform 0.6s ease 0.4s;
+}
+
+/* Wide Front Pocket */
+.front {
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 325px solid #ffcad4;
+    border-right: 325px solid #ffcad4;
+    border-bottom: 200px solid #ffb6c1;
+    border-radius: 0 0 20px 20px;
+    z-index: 4;
+}
+
+/* THE LANDSCAPE LETTER */
+.letter {
+    position: absolute;
+    bottom: 10px;
+    left: 25px;
+    width: 600px; /* Big Landscape Width */
+    height: 340px;
+    background: #ffffff;
+    border-radius: 10px;
+    z-index: 2;
+    transition: all 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    padding: 40px;
+    box-sizing: border-box;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+.letter-content {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.letter-body p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+/* OPEN ANIMATION */
+.envelope-wrapper.open .flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.envelope-wrapper.open .letter {
+    transform: translateY(-250px); /* Slides high up */
+    height: 500px; /* Expands to show all text */
+    width: 750px; /* Gets even wider when out */
+    left: -50px; /* Centers the wider letter */
+    z-index: 5;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+}
+
+.envelope-wrapper.open .letter-content {
+    opacity: 1;
+    transition-delay: 0.8s;
+}
+
+.envelope-wrapper.open .envelope {
+    transform: translateY(150px); /* Moves envelope down so letter is centered */
+}
+
+/* Center the footer in the landscape letter */
+.letter-footer {
+    text-align: center;
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+.ques{
+    color:rgb(243, 113, 113)
+}
+/* Final Page Layout */
+#final-page {
+    flex-direction: column;
+    overflow-y: auto; /* Allow scrolling if content is long */
+    padding: 50px 20px;
+}
+/* 1. This makes the container hold everything together */
+.photo-wall-container {
+    position: relative;
+    width: 95%;            /* Spans most of the screen width */
+    max-width: 1200px;     /* Maximum width for desktop */
+    height: 500px;         /* Fixed height to force Landscape shape */
+    margin: 40px auto;
+    padding: 40px;
+    border-radius: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    overflow: hidden;      /* Clips the rotated photos at the edges */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 2. This puts the 6 photos in a 3-column grid behind everything */
+.background-photo-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Changing to 4 columns and 3 rows makes the images much smaller */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    grid-template-rows: repeat(3, 1fr);
+    gap: 25px;             /* Bigger gap makes photos feel smaller and cleaner */
+    padding: 30px;         /* Keeps photos away from the container edges */
+    opacity: 0.5;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.bg-photo {
+    width: 100%;            /* Image takes up less of its grid cell */
+    height: 80%;           /* Image takes up less of its grid cell */
+    margin: auto;          /* Centers the smaller image in the cell */
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Adds a tiny bit of depth */
+}
+.bg-photo:nth-child(odd) { transform: rotate(-8deg); }
+.bg-photo:nth-child(even) { transform: rotate(8deg); }
+.bg-photo:nth-child(3n) { transform: rotate(15deg) scale(0.9); }
+
+/* 3. This ensures your 3 interactive Polaroids sit ON TOP */
+.photo-grid {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: row;   /* Ensures they sit side-by-side */
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+}
+/* Part 1: Polaroids */
+.photo-corner {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+}
+
+.polaroid {
+    background: #fdfdfd; /* Off-white for a paper feel */
+    padding: 15px 15px 35px 15px;
+    box-shadow: 
+        0 10px 25px rgba(0,0,0,0.1), 
+        inset 0 0 10px rgba(0,0,0,0.02); /* Inner shadow for depth */
+    border-radius: 2px;
+    position: relative;
+}
+
+/* Adding a subtle "old paper" texture to the frame */
+.polaroid::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+    opacity: 0.1; /* Very subtle */
+    pointer-events: none;
+}
+
+.polaroid:nth-child(even) { --r: 3deg; }
+
+.polaroid img {
+    width: 220px;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    
+    /* BLACK & WHITE EFFECT */
+    filter: grayscale(100%) contrast(1.1) brightness(0.9);
+    
+    /* Slight grain/vintage look */
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: filter 0.5s ease; /* Smooth transition if you hover */
+}
+
+/* Hover effect: Bring back a tiny bit of color when she hovers? 
+   (Optional: Remove this if you want it strictly B&W always) */
+.polaroid-wrapper:hover img {
+    filter: grayscale(30%) contrast(1.1) brightness(1);
+}
+
+.polaroid p {
+    font-family: 'Handlee', cursive; /* A handwriting font looks great here */
+    color: #d63384;
+    margin-top: 15px;
+}
+
+/* Part 2: Expression */
+.expression-box {
+    margin: 40px 0;
+}
+
+.big-question {
+    font-size: 4rem;
+    color: #d63384;
+    text-shadow: 0 0 20px rgba(214, 51, 132, 0.2);
+    margin-top: 30px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Part 3: Textbox */
+.message-input-section {
+    width: 100%;
+    max-width: 600px;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    border: 2px solid #ffc0cb;
+    border-radius: 20px;
+    padding: 20px;
+    font-family: inherit;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    outline: none;
+    transition: 0.3s;
+}
+
+textarea:focus {
+    border-color: #d63384;
+    background: white;
+}
+/* Decorative Icons */
+.decor {
+    position: absolute;
+    font-size: 1.8rem;
+    z-index: 6;
+    pointer-events: none;
+    animation: floatingIcon 4s infinite ease-in-out;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
+}
+
+@keyframes floatingIcon {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(10deg); }
+}
+
+/* Ensure the photo-grid is the reference for absolute icons */
+.photo-grid {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 60px;
+}
+
+/* The Polaroid Wrapper remains the same as your favorite version */
+.polaroid-wrapper {
+    position: relative;
+    transition: transform 0.4s ease;
+}
+
+.polaroid-wrapper:hover {
+    transform: scale(1.05) rotate(0deg) !important;
+    z-index: 10;
+}
+.mid-text-container {
+    margin: 40px auto;
+    max-width: 600px;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.handwritten-text {
+    font-family: 'Georgia', serif; /* Or 'Handlee' if you have it linked */
+    font-style: italic;
+    font-size: 1rem;
+    color: #d63384;
+    margin-bottom: 15px;
+    opacity: 0;
+    animation: fadeInUp 2s forwards; /* Fades in smoothly */
+    line-height: 1.6;
+}
+
+/* Delay the second line slightly so they appear one after another */
+.handwritten-text:nth-child(2) {
+    animation-delay: 1s;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Confession Page Layout */
+#confession-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    background: radial-gradient(circle, #fff5f7 0%, #ffe4e9 100%);
+}
+
+.confession-box {
+    max-width: 700px;
+    margin-bottom: 40px;
+}
+
+.reveal-text {
+    font-family: 'Georgia', serif;
+    font-size: 1.6rem;
+    color: #d63384;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    text-align: center;
+    font-style: italic;
+    
+    /* Animation settings */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUpItem 1.5s forwards;
+}
+
+/* Timing: Each sentence waits for the previous one to finish */
+.reveal-text:nth-child(1) { animation-delay: 0.8s; }
+.reveal-text:nth-child(2) { animation-delay: 3.5s; }
+.reveal-text:nth-child(3) { animation-delay: 6.5s; }
+.reveal-text:nth-child(4) { animation-delay: 9.5s; }
+.reveal-text:nth-child(5) { animation-delay: 12.5s; }
+
+/* The button appears last of all */
+#to-valentine-btn {
+    opacity: 0;
+    animation: fadeUpItem 1.5s forwards;
+    animation-delay: 14.5s;
+    transition: 0.3s ease;
+}
+
+@keyframes fadeUpItem {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Gentle floating petals for background */
+.petal {
+    position: absolute;
+    font-size: 1.5rem;
+    opacity: 0.3;
+    animation: floatDown 10s infinite linear;
+}
+
+@keyframes floatDown {
+    0% { transform: translateY(-10vh) rotate(0deg); }
+    100% { transform: translateY(110vh) rotate(360deg); }
+}
+
+/* Final Page Styling */
+#final-page {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #fff5f7 0%, #ffe4e9 100%);
+    overflow-y: auto;
+}
+
+.final-card {
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+}
+
+.big-question {
+    font-family: 'Handlee', cursive;
+    color: #d63384;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.big-question-main {
+    font-size: 3.5rem;
+    color: #d63384;
+    margin-bottom: 40px;
+    text-shadow: 0 5px 15px rgba(214, 51, 132, 0.2);
+    animation: pulseHeart 2s infinite;
+}
+
+@keyframes pulseHeart {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+}
+
+/* Proposing Photo Styling */
+.proposing-photo-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 40px;
+}
+
+.proposing-photo {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 20px;
+    border: 8px solid white;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
+
+/* Message Section */
+.response-section {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.instruction {
+    color: #888;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px solid #ffcad4;
+    background: rgba(255, 255, 255, 0.8);
+    font-family: inherit;
+    font-size: 1.1rem;
+    resize: none;
+    outline: none;
+    transition: 0.3s;
+}
+
+textarea:focus {
+    border-color: #d63384;
+    background: white;
+    box-shadow: 0 0 20px rgba(214, 51, 132, 0.1);
+}
+
+.send-btn {
+    margin-top: 20px;
+    background: #d63384;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(214, 51, 132, 0.2);
+}
+
+.send-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(214, 51, 132, 0.3);
+    background: #c22073;
+}
+.gratitude-text {
+    margin-top: 30px;
+}
+
+.final-heart {
+    font-size: 4rem;
+    margin-top: 40px;
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    15% { transform: scale(1.25); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.15); }
+    60% { transform: scale(1); }
+}

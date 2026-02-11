@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Babygirl</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="landing-page" class="container">
+        <h1 class="pop-text">Are you ready for it, My lovely Babygirl?</h1>
+        <div class="btn-group">
+            <button id="yes-btn" onclick="nextPage()">Yes 😍</button>
+            <button id="no-btn">No😛</button>
+        </div>
+    </div>
+
+    <div id="message-page" class="container hidden">
+        <div class="message-card">
+            <h2>My Dearest,</h2>
+            <p class="emotional-text">
+                From the moment you stepped into my life, everything changed. 
+                Your smile and your eyes are my favorite place to get lost in, and your heart is my home. 
+                As This is our first valentine together I wanted to do something special for you but you 
+                know for some family limitations I failed, So I decided to build this small corner of the 
+                internet just for you...I hope you will like it. You deserve to be loved every single day.
+            </p>
+            <button class="continue-btn" onclick="showLetter()">Click to continue our journey ❤️</button>
+        </div>
+    </div>
+
+    <div id="letter-page" class="container hidden">
+    <div class="envelope-wrapper" onclick="openLetter()">
+        <div class="envelope">
+            <div class="flap"></div>
+            <div class="front"></div>
+            <div class="letter">
+                <div class="letter-content">
+                    <h3>To My Babygirl,</h3>
+                    <div class="letter-body">
+                        <p>
+                            I wanted to take a moment to tell you how much you truly mean to me.
+                            Talking with you feels like heaven,whenever i talk to you i feel inexpressible peace.
+                            You make me feel loved, happy , take my sadness away and make me feel happy again. 
+                        </p>
+                        <p>
+                            You are the most beautiful soul I have ever met, and I promise to 
+                            always be your safest home .Whenever you feel heavy come to me. I will be 
+                            always there for you. You are mine, and I am so lucky to have you in my life
+                        </p>
+                    </div>
+                    <div class="letter-footer">
+                        <p class="ques">Ready for the surprise?</p>
+                        <button class="continue-btn" onclick="showFinalPage(event)">Yes ❤️</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="hint">Click the envelope to open it</p>
+</div>
+<div id="photo-page" class="container hidden">
+    <h1 class="pop-text">Our Little Corner</h1>
+    
+    <div class="photo-wall-container">
+        
+        <div class="background-photo-grid">
+            <img src="images/image1.jpg" class="bg-photo">
+            <img src="images/image2.jpg" class="bg-photo">
+            <img src="images/image3.jpg" class="bg-photo">
+            <img src="images/image4.jpg" class="bg-photo">
+            <img src="images/image5.jpg" class="bg-photo">
+            <img src="images/image6.jpg" class="bg-photo">
+            <img src="images/image7.jpg" class="bg-photo">
+            <img src="images/image8.jpg" class="bg-photo">
+        </div>
+
+        <div class="photo-grid">
+            <div class="decor" style="top: -20px; left: -30px;">🦋</div>
+            <div class="decor" style="bottom: -20px; right: -30px;">🌸</div>
+            <div class="decor" style="top: 50%; left: -50px;">✨</div>
+            <div class="decor" style="top: 10%; right: -40px;">🌸</div>
+
+            <div class="polaroid-wrapper">
+                <div class="tape"></div>
+                <div class="polaroid">
+                    <img src="images/IMG-20250711-WA0004.jpg" alt="Us">
+                    <div class="caption">The day my life changed✨</div>
+                </div>
+            </div>
+
+            <div class="polaroid-wrapper">
+                <div class="tape"></div>
+                <div class="polaroid">
+                    <img src="images/IMG-20250711-WA0003.jpg" alt="Us">
+                    <div class="caption">Our first kiss on the cheeks ❤️</div>
+                </div>
+                <div class="decor" style="bottom: -10px; left: -20px;">🦋</div>
+            </div>
+
+            <div class="polaroid-wrapper">
+                <div class="tape"></div>
+                <div class="polaroid">
+                    <img src="images/IMG_20250711_151917.jpg" alt="Us">
+                    <div class="caption">Our eye contact 🌸</div>
+                </div>
+                <div class="decor" style="top: -10px; right: -10px;">✨</div>
+            </div>
+        </div> </div> <div class="mid-text-container">
+        <p class="handwritten-text">Every picture here holds a piece of my heart.Whenever i see our pictures together I
+             get so emotional. I get lost in the day when we had our first date together. No camera could ever capture how much I truly love you </p>
+        <p class="handwritten-text">I wanted to make this corner as a memory of our first date</p>
+    </div>
+    
+    <button class="continue-btn" onclick="showExpressionPage()">I have something to say... ➔</button>
+</div>
+<div id="confession-page" class="container hidden">
+    <div class="confession-container">
+        <div class="confession-decorations">
+            <span class="petal">🌸</span>
+            <span class="petal">💖</span>
+            <span class="petal">🌸</span>
+        </div>
+
+        <div class="confession-box">
+            <p class="reveal-text">Looking back at those pics, I realize how lucky I am to have you.</p>
+            <p class="reveal-text">You have become the best part of my life.</p>
+            <p class="reveal-text">The way you talk to me with love,care, and bring peace in my life. </p>
+            <p class="reveal-text">I never knew I would feel this deeply for someone until I found you.</p>
+            <p class="reveal-text">My heart is full because of you and im never giving you any chance to leave.</p>
+        </div>
+
+        <button class="continue-btn" id="to-valentine-btn" onclick="showValentinePage()">
+            I have one more question... ➔
+        </button>
+    </div>
+</div>
+    <div id="final-page" class="container hidden">
+    <div class="final-card">
+        <h1 class="big-question">So, My Favorite Human...</h1>
+        <h2 class="big-question-main">Will you be my Valentine?💓</h2>
+
+        <div class="proposing-photo-container">
+            <img src="images/propose.png" alt="Proposing" class="proposing-photo">
+            <div class="photo-glow"></div>
+        </div>
+
+        <div class="response-section">
+            <p class="instruction">Ignore the background 😭😭</p>
+            <form action="https://formspree.io/f/xvzbzbwb" method="POST" id="valentine-form">
+                <textarea 
+                    name="message" 
+                    placeholder="You are free to day anything my dear. Write here anything you want" 
+                    required></textarea>
+                
+                <button type="submit" class="send-btn">
+                    Send❤️
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="thank-you-page" class="container hidden">
+    <div class="final-card">
+        <h1 class="big-question">Message Received... ❤️</h1>
+        <div class="gratitude-text">
+            <p class="handwritten-text">Thank you for BEING YOU.</p>
+            <p class="handwritten-text">Thank you for BEING PATIENT WITH ME </p>
+            <p class="handwritten-text">Thank you for UNDERSTANDING ME</p>
+            <p class="handwritten-text">Thank you for NOT BEING RUDE AFTER I DO MISTAKES</p>
+            <p class="handwritten-text">Thank you for THE GIFTS.I WILL REMEMBER IT FOREVER</p>
+            <p class="handwritten-text">Thank you for JUST EXISTING IN MY LIFE</p>
+            <p class="handwritten-text">MY HEART IS YOURS. I LOVE YOU SOOOOOOO MUCH. YOU ARE MY FOREVER</p>
+            <p class="handwritten-text">THANK YOU FOR EVERYTHING</p>
+        </div>
+        <div class="final-heart">💖</div>
+    </div>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>
